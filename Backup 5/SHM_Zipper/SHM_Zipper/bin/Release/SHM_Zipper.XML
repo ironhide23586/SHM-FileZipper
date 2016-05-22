@@ -1,0 +1,338 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SHM_Zipper</name>
+    </assembly>
+    <members>
+        <member name="T:SHM_Zipper.SHMZipper">
+            <summary>
+            Class to encapsulate the SHM-File Zipping functionalities.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.ZipMode">
+            <summary>
+            Denotes whether the file loaded is to be compressed or decompressed.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateFileDiagonalElements">
+            <summary>
+            Internal field containing the diagonal elements of the binary
+            file matrix.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateFileMatrix">
+            <summary>
+            Internally modifiable Central copy of the BinaryMatrix object.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.workingMatrix">
+            <summary>
+            BinaryMatrix Object utilized for compression/decompression.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateFilePath">
+            <summary>
+            Internal string holding location of file.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateFileAsByteArray">
+            <summary>
+            Internal byte array holding file data as byte array.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateFileMatrixNoOfBitsInSide">
+            <summary>
+            Contains the size of the square binary file matrix in bits.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateCompressedData">
+            <summary>
+            Internal byte array containing compressed data.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateVerticalNoOfOnesCountStatic">
+            <summary>
+            Array storing number of '1's in each ROW of the file binary matrix.
+            <para>This property contains the original values pertaining to the input file
+            and is NOT ALTERED.</para>
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateVerticalNoOfOnesToBeFilled">
+            <summary>
+            Number of ones yet to be filled in each row of the binary working matrix.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateHorizontalNoOfOnesCountStatic">
+            <summary>
+            Array storing number of '1's in each COLUMN of the file binary matrix.
+            <para>This property contains the original values pertaining to the input file
+            and is NOT ALTERED.</para>
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateHorizontalNoOfOnesToBeFilled">
+            <summary>
+            Number of ones yet to be filled in each column of the binary working matrix.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateRevDiagNoOfOnesCountStatic">
+            <summary>
+            Array storing number of '1's in each REVERSE DIAGONAL of the file binary matrix.
+            <para>This property contains the original values pertaining to the input file
+            and is NOT ALTERED.</para>
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateRevDiagNoOfOnesToBeFilled">
+            <summary>
+            Number of ones yet to be filled in each reverse diagonal of the binary working matrix.
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateDiagNoOfOnesCountStatic">
+            <summary>
+            Array storing number of '1's in each DIAGONAL of the file binary matrix.
+            <para>This property contains the original values pertaining to the input file
+            and is NOT ALTERED.</para>
+            </summary>
+        </member>
+        <member name="F:SHM_Zipper.SHMZipper.privateDiagNoOfOnesToBeFilled">
+            <summary>
+            Number of ones yet to be filled in each diagonal of the binary working matrix.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.#ctor(System.String,SHM_Zipper.SHMZipper.ProcessMode)">
+            <summary>
+            Constructor accepting path of the file, as one argument and whether to compress
+            or decompress the file as another argument.
+            </summary>
+            <param name="inputFilePath">Path of the file to be processed.</param>
+            <param name="zMode">To denote whether to compress or decompress the file.</param>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.#ctor(System.String)">
+            <summary>
+            Constructor accepting only path of the file to be compressed as argument.
+            <para>NOTE : By default the file process mode is set to "COMPRESS"</para>
+            </summary>
+            <param name="inputFilePath">Path of the file to be processed.</param>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.#ctor(System.Byte[])">
+            <summary>
+            Constructor accepting a raw byte array for this object.
+            </summary>
+            <param name="fileAsByteArray">Input Byte Array.</param>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.#ctor">
+            <summary>
+            Empty constructor.
+            <para>NOTE : It is important to initialize this object atleast once before 
+            performing any compression.</para>
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.SetObject(System.String)">
+            <summary>
+            Method to initialize this object with a file
+            </summary>
+            <param name="inputFilePath">Path of the file.</param>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.SetObject(System.Byte[])">
+            <summary>
+            Method to initialize this object with a byte array.
+            </summary>
+            <param name="inputFileAsByteArray">Input byte array.</param>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.ProcessFile">
+            <summary>
+            SHM-Compresses or SHM-Decompresses the file with this object is initialized.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.compress">
+            <summary>
+            Method to perform SHM-File Compression.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.decompress">
+            <summary>
+            Method to perform SHM-File Decompression.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.acceptByteArray(System.Byte[])">
+            <summary>
+            Method to process input byte array of file into this object.
+            <para>Called everytime this class is loaded with data.</para>
+            </summary>
+            <param name="byteArray">Input byte array.</param>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.resetWorkingMatrix">
+            <summary>
+            Clears the working matrix of all data.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.resetVerticalNoOfOnesCount">
+            <summary>
+            Resets the dynamic array(being used for compression/decompression) containing the number of '1's in each row to the original
+            values as present in the input file.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.resetHorizontalNoOfOnesCount">
+            <summary>
+            Resets the dynamic array(being used for compression/decompression) containing the number of '1's in each column to the original
+            values as present in the input file.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.resetRevDiagNoOfOnesCount">
+            <summary>
+            Resets the dynamic array(being used for compression/decompression) containing the number of '1's in each column to the original
+            values as present in the input file.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.resetDiagNoOfOnesCount">
+            <summary>
+            Resets the dynamic array(being used for compression/decompression) containing the number of '1's in each column to the original
+            values as present in the input file.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.resetDynamicComponents">
+            <summary>
+            Resets all variables being employed for compression/decompression.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.initializeNoOfOnesArrays">
+            <summary>
+            Initializes the horizontal and vertical NoOfOnes arrays.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.initializePrivateVerticalNoOfOnesCount">
+            <summary>
+            Intializes the arrays pertaining to vertical No. of ones count, both static and dynamic.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.initializePrivateHorizontalNoOfOnesCount">
+            <summary>
+            Intializes the arrays pertaining to horizontal No. of ones count, both static and dynamic.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.initializePrivateRevDiagNoOfOnesCount">
+            <summary>
+            Initializes the arrays pertaining to the reverse diagonal No. of ones count, both static and dynamic.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.intializePrivateDiagNoOfOnesCount">
+            <summary>
+            Initializes the arrays pertaining to the diagonal No. of ones count, both static and dynamic.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.processHorizontalNoOfOnes(System.UInt32,System.UInt32)">
+            <summary>
+            Populates the array containing number of '1's in each column within the input indices.
+            </summary>
+            <param name="startCol">Index of starting column.</param>
+            <param name="limitingCol">Index of ending column.</param>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.getFileBitAt2DIndex(System.UInt32,System.UInt32)">
+            <summary>
+            Gets the bit of the file at the specified 2D index from the binary file matrix.
+            </summary>
+            <param name="rowIndex">Row Index from which to get the bit.</param>
+            <param name="colIndex">Column Index from which to get the bit.</param>
+            <returns>Bit value ('0' or '1') which is stored at the specified index.</returns>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.predictBitAt2DIndex(System.UInt32,System.UInt32)">
+            <summary>
+            Predicts the bit at given index based on input parameters (Used mainly during decompression).
+            </summary>
+            <param name="row">Row index of the bit to be predicted.</param>
+            <param name="col">Column index of the bit to be predicted.</param>
+            <returns>Predicted bit ('0' or '1') at the specified index.</returns>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.getRevDiagIndexVector(System.UInt32,System.UInt32)">
+            <summary>
+            Maps the 2D index of a bit to the corresponding index of the no. of ones in the pertaining reverse diagonal.
+            </summary>
+            <param name="row">Row index of the bit in the file matrix.</param>
+            <param name="col">Column index of the bit in the file matrix.</param>
+            <returns>Index of the array element containing the no. of ones in the reverse diagonal pertaining to the bit at the given index.</returns>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.getDiagIndexVector(System.UInt32,System.UInt32)">
+            <summary>
+            Maps the 2D index of a bit to the corresponding index of the no. of ones in the pertaining diagonal.
+            </summary>
+            <param name="row">Row index of the bit in the file matrix.</param>
+            <param name="col">Column index of the bit in the file matrix.</param>
+            <returns>Index of the array element containing the no. of ones in the diagonal pertaining to the bit at the given index.</returns>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.setPredictedBitInWorkingMatrixAt2DIndex(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the predicted bit in working matrix and updates the NoOfOneCount dynamic array.
+            </summary>
+            <param name="row">Target row index.</param>
+            <param name="col">Target column index.</param>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.predictedBitEqualToActualBit(System.UInt32,System.UInt32)">
+            <summary>
+            Denotes whether bit predicted at given index is correct or not.
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.initializeWorkingMatrix(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.UInt32,System.UInt32)">
+            <summary>
+            Populates working matrix with known data.
+            </summary>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.updateNoOfOnes(System.UInt32,System.UInt32)">
+            <summary>
+            Updates all the arrays holding the number of ones pertaining to the bit at given index.
+            </summary>
+            <param name="row">Row index of bit in consideration.</param>
+            <param name="col">Column index of bit in consideration.</param>
+        </member>
+        <member name="M:SHM_Zipper.SHMZipper.processWorkingMatrix(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.UInt32,System.UInt32)">
+            <summary>
+            
+            </summary>
+            <param name="dSelected"></param>
+            <param name="revDSelected"></param>
+            <param name="rSelected"></param>
+            <param name="cSelected"></param>
+            <param name="selRow"></param>
+            <param name="selCol"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SHM_Zipper.SHMZipper.FileMatrix">
+            <summary>
+            Central BinaryMatrix object of the file to be converted.
+            </summary>
+        </member>
+        <member name="P:SHM_Zipper.SHMZipper.FileDiagonalElements">
+            <summary>
+            Diagonal elements of the binary file 2D matrix
+            </summary>
+        </member>
+        <member name="P:SHM_Zipper.SHMZipper.VerticalNoOfOnesCount">
+            <summary>
+            Array storing number of '1's in each ROW of the file binary matrix.
+            </summary>
+        </member>
+        <member name="P:SHM_Zipper.SHMZipper.HorizontalNoOfOnesCount">
+            <summary>
+            Array storing number of '1's in each COLUMN of the file binary matrix.
+            </summary>
+        </member>
+        <member name="P:SHM_Zipper.SHMZipper.CompressedData">
+            <summary>
+            Byte Array containing the compressed data.
+            <para>NOTE : This is initialized only when the Compress() function
+            is called explicitly.</para>
+            </summary>
+        </member>
+        <member name="P:SHM_Zipper.SHMZipper.OriginalFileAsByteArray">
+            <summary>
+            File loaded onto this object represented as a byte array.
+            </summary>
+        </member>
+        <member name="P:SHM_Zipper.SHMZipper.FilePath">
+            <summary>
+            Path of the file to be processed;
+            </summary>
+        </member>
+    </members>
+</doc>

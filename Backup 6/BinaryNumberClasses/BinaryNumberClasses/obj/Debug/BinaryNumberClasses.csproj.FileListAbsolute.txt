@@ -1,0 +1,8 @@
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\bin\Debug\BinaryNumberClasses.dll
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\bin\Debug\BinaryNumberClasses.pdb
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\obj\Debug\BinaryNumberClasses.dll
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\obj\Debug\BinaryNumberClasses.pdb
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\bin\Debug\BinaryNumberClasses.XML
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\bin\Debug\BinaryNumberClasses.dll.config
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\obj\Debug\BinaryNumberClasses.Properties.Resources.resources
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\obj\Debug\BinaryNumberClasses.csproj.GenerateResource.Cache

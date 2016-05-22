@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BinaryNumberClasses</name>
+    </assembly>
+    <members>
+        <member name="T:BinaryNumberClasses.BinaryNumber">
+            <summary>
+            Encapsulates a Binary number of any length and stores as a byte array.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryNumber.privateByteRepresentation">
+            <summary>
+            Variable storing the binary data on which operations will be performed.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryNumber.privateNoOfBytes">
+            <summary>
+            Private variable containing size of binary data stored in object.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryNumber.privateBinaryDataSetInitialized">
+            <summary>
+            Set to true only when the object of this class is initialized with binary data.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryNumber.byteLength">
+            <summary>
+            Number of bits in a "Byte".
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.#ctor">
+            <summary>
+            Constructor to accept no arguments to initialize the object.
+            <para>
+            NOTE : It is compulsory to initialize the object by using the
+            SetObject() method atleast once before working with this object.
+            </para>
+            <para>
+            Avoiding so, will cause it to throw a BinaryObjectNotInitializedException
+            whenever an operation will be performed on it.
+            </para>
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.#ctor(System.String)">
+            <summary>
+            Contructor accepting binary number as a string argument.
+            </summary>
+            <param name="binaryNumberAsString">Binary Number to be considered.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.#ctor(System.Byte[])">
+            <summary>
+            Constructor accepting a byte Array as Binary Data.
+            </summary>
+            <param name="byteArray"></param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.GetNoOfOnesInByte(System.Byte)">
+            <summary>
+            Gets the number of bits in a Byte set to '1'.
+            </summary>
+            <param name="b">Byte to be considered.</param>
+            <returns>Number of bits in 'b' set to '1'.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.ReturnBinaryByteArray(System.String)">
+            <summary>
+            Returns a byte array in which each cell holds a '0' or a '1'.
+            </summary>
+            <param name="binString">Binary Number to be operated upon.</param>
+            <returns>Byte array in which each cell holds a '0' or a '1'.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.BitAtIndex(System.UInt32)">
+            <summary>
+            Returns the Bit ('0' or '1') stored in the object at the given index.
+            </summary>
+            <param name="index">Index of the position from which the Bit is to be extracted.</param>
+            <returns>Bit value stored at the given index of the input binary data.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.SetObject(System.String)">
+            <summary>
+            Sets the ByteRepresentation byte array according to the binary value denoted by the
+            input String.
+            </summary>
+            <param name="binaryNumberAsString">Binary Number to be considered.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.SetObject(System.Byte[])">
+            <summary>
+            Sets the ByteRepresentation Byte Array Property of the object.
+            </summary>
+            <param name="byteArray">Byte Array containing the binary data for the ByteRepresentation Property
+            of the BinaryNumber Object.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.getNoOfOnes">
+            <summary>
+            Calculates number of bits in input binary data set to '1'.
+            </summary>
+            <returns>Number of bits in input binary data set to '1'.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.computeByteRepresentation(System.String)">
+            <summary>
+            Computes the value of ByteRepresentation byte array of this class.
+            </summary>
+            <param name="binString">Binary number to be utilised.</param>
+            <returns>Byte Array containing the binary digits as a minimum fit.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.updateAllPublicAttributes">
+            <summary>
+            Updates the values of all Public and Private attributes of the object of this class
+            corresponding to the contents of the ByteRepresentation Array.
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.ComputeByteRepresentationLength(System.String)">
+            <summary>
+            Computes value of NoOfBytes Property, which stores the size of the 
+            ByteRepresentation array.
+            </summary>
+            <param name="binaryNumAsString">Binary Number to be considered.</param>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.NoOfOnes">
+            <summary>
+            Number of bits in the binary data set to '1'.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.NoOfBytes">
+            <summary>
+            Number of Bytes occupied by stored Binary number.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.NoOfBits">
+            <summary>
+            Number of bits occupied
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.ByteRepresentation">
+            <summary>
+            Variable storing the binary data on which operations will be performed.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.BinaryDataSetInitialized">
+            <summary>
+            This is set true only when the object of this class is initialized with binary data.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberExceptions.BinaryObjectNotInitializedException">
+            <summary>
+            Exception Thrown when BinaryNumber object is modified without initialization.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberExceptions.InvalidBinaryStringException">
+            <summary>
+            Exception thrown when a non-binary string is entered as binary data 
+            into the BinaryNumber Object.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberExceptions.InvalidBinaryInputDataTypeException">
+            <summary>
+            Exception thrown when anything other than a byte array is being stored in the
+            BinaryNumber object.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberExceptions.IllegalBitReferenceIndexException">
+            <summary>
+            Exception thrown when an illegal reference to a bit location in the binary Data
+            contained in the BinaryNumber object is made. 
+            </summary>
+        </member>
+        <member name="T:BinaryNumberClasses.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

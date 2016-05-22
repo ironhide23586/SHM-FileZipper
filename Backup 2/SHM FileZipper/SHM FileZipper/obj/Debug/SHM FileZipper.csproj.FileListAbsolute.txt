@@ -1,0 +1,12 @@
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\bin\Debug\SHM FileZipper.exe.config
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\bin\Debug\SHM FileZipper.exe
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\bin\Debug\SHM FileZipper.pdb
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\obj\Debug\SHM FileZipper.exe
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\obj\Debug\SHM FileZipper.pdb
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\bin\Debug\BinaryNumberClasses.dll
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\bin\Debug\BinaryNumberClasses.xml
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\bin\Debug\BinaryNumberClasses.pdb
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\bin\Debug\SHM_Zipper.dll
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\bin\Debug\SHM_Zipper.pdb
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\bin\Debug\SHM_Zipper.xml
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM FileZipper\SHM FileZipper\obj\Debug\SHM FileZipper.csprojResolveAssemblyReference.cache

@@ -1,0 +1,9 @@
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\bin\Release\BinaryNumberClasses.dll.config
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\bin\Release\BinaryNumberClasses.XML
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\bin\Release\BinaryNumberClasses.dll
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\bin\Release\BinaryNumberClasses.pdb
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\obj\Release\BinaryNumberClasses.Properties.Resources.resources
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\obj\Release\BinaryNumberClasses.csproj.GenerateResource.Cache
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\obj\Release\BinaryNumberClasses.dll
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\obj\Release\BinaryNumberClasses.pdb
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\BinaryNumberClasses\BinaryNumberClasses\obj\Release\BinaryNumberClasses.csprojResolveAssemblyReference.cache

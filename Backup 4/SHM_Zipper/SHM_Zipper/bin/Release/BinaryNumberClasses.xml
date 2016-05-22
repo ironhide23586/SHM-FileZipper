@@ -1,0 +1,515 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BinaryNumberClasses</name>
+    </assembly>
+    <members>
+        <member name="T:BinaryNumberClasses.BinaryMatrix">
+            <summary>
+            Class to encapsulate 2D matrix of Binary Numbers.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberClasses.BinaryStaticClass">
+            <summary>
+            Class containing all static methods utilized by the other classes in this assembly.
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryStaticClass.NearestPerfectSquare(System.UInt32)">
+            <summary>
+            Calculates the perfect square which is greater than or equal to the input number.
+            </summary>
+            <param name="a">Number whose nearest perfect square is to be calculated.</param>
+            <returns>Perfect square which is greater than or equal to the input number.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryStaticClass.GetNoOfOnesInByte(System.Byte)">
+            <summary>
+            Gets the number of bits in a Byte set to '1'.
+            </summary>
+            <param name="b">Byte to be considered.</param>
+            <returns>Number of bits in 'b' set to '1'.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryStaticClass.ReturnBinaryByteArray(System.String)">
+            <summary>
+            Returns a byte array in which each cell holds a '0' or a '1'.
+            </summary>
+            <param name="binString">Binary Number to be operated upon.</param>
+            <returns>Byte array in which each cell holds a '0' or a '1'.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryStaticClass.BitAtBitIndex(System.Byte[],System.UInt32)">
+            <summary>
+            Gets the bit ('0' or '1') at the specified bit index from the byte array.
+            </summary>
+            <param name="byteArr">Input byte array.</param>
+            <param name="index">Bit index
+            <para>Can range from 0 to (byteArr.Length * 8 - 1)</para></param>
+            <returns>Bit value ('0' or '1') at the specified bit index from the byte array.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryStaticClass.ByteStringRepresentation(System.Byte)">
+            <summary>
+            Converts a given byte into it's equivalent string representation.
+            </summary>
+            <param name="inByte">Byte to be converted.</param>
+            <returns>String of 0's and 1's representing the byte.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryStaticClass.NoOfBytesToFitNoOfBits(System.Int32)">
+            <summary>
+            Minimum number of bytes needed to fit the said number of bits.
+            </summary>
+            <param name="noOfBits">Number of binary bits to be fit.</param>
+            <returns>Memory space in bytes which can accomodate the input number of bits.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryStaticClass.ParseBinaryByteArrayToByteArray(System.Byte[],System.Byte[])">
+            <summary>
+            Parses the input binary byte array (Byte array where each cell holds a '0' or '1') into a byte array
+            where each bit has been concatenated and the resulting array has been accordingly resized.
+            </summary>
+            <param name="binaryByteArray">Input binary byte array.</param>
+            <param name="outByteArray">Byte array to contain the parsed data.</param>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryMatrix.privateBinaryDataSetInitialized">
+            <summary>
+            Set to true when object of this class is initialized with data.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryMatrix.inputBinaryDataOriginal">
+            <summary>
+            Central BinaryNumber object containing raw data from input object.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryMatrix.inputBinaryDataOffsetted">
+            <summary>
+            Central BinaryNumber object whose contents have been aligned to fit inside a 
+            square binary matrix.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryMatrix.privateBinaryMatrixNoOfBytesInSide">
+            <summary>
+            When the byte array is arranged as a square matrix, this is the number of bytes in
+            a side. This is an internal editable field.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryMatrix.privateBinaryMatrixNoOfBitsInSide">
+            <summary>
+            When the byte array is arranged as a square matrix, this is the number of bits in
+            a side. This is an internal editable field.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryMatrix.privateSplitInputBinaryData">
+            <summary>
+            Internal member containing all the rows of the matrix.
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.#ctor(System.Byte[])">
+            <summary>
+            Constructor accepting byte array as argument.
+            </summary>
+            <param name="inpByteArr">Input Byte Array</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.#ctor(BinaryNumberClasses.BinaryNumber)">
+            <summary>
+            Constructor accepting BinaryNumber object as argument.
+            </summary>
+            <param name="inpBinaryNumber">Input BinaryNumber object.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.#ctor">
+            <summary>
+            Constructor with no arguments.
+            <para>NOTE : This object must be initialized before manipulating it, else
+            BinaryObjectNotInitializedException will be thrown.</para>
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.Clone">
+            <summary>
+            Returns a copy of the object of this class.
+            </summary>
+            <returns>Copy of the object of this class.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.GetMatrixDiagonal">
+            <summary>
+            Gets the diagonal elements of the binary matrix.
+            </summary>
+            <returns>A BinaryNumber object made up of the diagonal bits.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.GetMatrixReverseDiagonal">
+            <summary>
+            Gets the opposite (right to left) diagonal elements of the binary matrix.
+            </summary>
+            <returns>A BinaryNumber object made up of the diagonal bits.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.BitAt2DIndex(System.UInt32,System.UInt32)">
+            <summary>
+            Gets the bit ('0' or '1') at given index of this object.
+            </summary>
+            <param name="rowIndex">Index of the row from which the bit is to be retrieved.</param>
+            <param name="colIndex">Index of the column from which the bit is to be retrieved.</param>
+            <returns>Bit stored at index (rowIndex, colIndex) of this object.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.SetBitAt2DIndex(System.UInt32,System.UInt32,System.Byte)">
+            <summary>
+            Sets the bit ('0' or '1') at the given index of this object.
+            </summary>
+            <param name="rowIndex">Row index of the bit to be set.</param>
+            <param name="colIndex">Column index of the bit to be set.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.Clear">
+            <summary>
+            Intializes all data in this object to '0';
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.SetObject(BinaryNumberClasses.BinaryNumber)">
+            <summary>
+            Method to set central object of this class.
+            </summary>
+            <param name="inpBinaryNumber">Input BinaryNumber object.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.SetObject(System.Byte[])">
+            <summary>
+            Method to set central object of this class.
+            </summary>
+            <param name="inpByteArr">Input byte array.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.compute2DBinaryOffset">
+            <summary>
+            Computes the number of bits to offset the contents of the input raw binary data,
+            So as to fit them into a square binary matrix.
+            </summary>
+            <returns>The number of bits (offset) by which the original data must be shifted.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.computeSplitRawBinaryData">
+            <summary>
+            Initializes the SplitRawBinaryData property of this object.
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.setObjectFinalize">
+            <summary>
+            Final method called at the end of every SetObject() function which updates the necessary
+            properties pertaining to the input binary raw data of the object of this class.
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.computeBinaryMatrixNoOfBytesInSide">
+            <summary>
+            Gets the length of the side of the square binary matrix in bytes.
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryMatrix.initializeInputBinaryDataOffsetted">
+            <summary>
+            Initializes the contents of InputBinaryDataOffsetted field by accordingly shifting
+            the contents.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryMatrix.Diagonal">
+            <summary>
+            Diagonal elements of the 2D Binary matrix.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryMatrix.ReverseDiagonal">
+            <summary>
+            Opposite Diagonal elements of the 2D Binary matrix.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryMatrix.SplitRawBinaryData">
+            <summary>
+            RawBinaryData (input binary data) split into partitions with size equal to the
+            length of the square matrix side in which it is fitted.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryMatrix.BinaryDataSetInitialized">
+            <summary>
+            Denotes if the object of this class has been initialized with data or not.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryMatrix.BinaryMatrixNoOfBytesInSide">
+            <summary>
+            When the byte array is arranged as a square matrix, this is the number of bytes in
+            a side.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryMatrix.BinaryMatrixNoOfBitsInSide">
+            <summary>
+            When the byte array is arranged as a square matrix, this is the number of bits in
+            a side.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryMatrix.RawBinaryData">
+            <summary>
+            Central BinaryNumber object containing raw binary data.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryMatrix.StringRepresentation">
+            <summary>
+            Binary data in the matrix formatted as a square.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryMatrix.ByteRepresentation">
+            <summary>
+            Stream of bytes containing the information stored in this matrix.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberClasses.BinaryNumber">
+            <summary>
+            Encapsulates a Binary number of any length and stores as a byte array.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryNumber.sizeConstrained">
+            <summary>
+            Denotes if the size of the object is fixed.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryNumber.stringInput">
+            <summary>
+            Set true only when object is initialized with binary data input as string.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryNumber.privateByteRepresentation">
+            <summary>
+            Variable storing the binary data on which operations will be performed.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryNumber.privateNoOfBytes">
+            <summary>
+            Private variable containing size of binary data stored in object.
+            </summary>
+        </member>
+        <member name="F:BinaryNumberClasses.BinaryNumber.privateBinaryDataSetInitialized">
+            <summary>
+            Set to true only when the object of this class is initialized with binary data.
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.#ctor">
+            <summary>
+            Constructor to accept no arguments to initialize the object.
+            <para>
+            NOTE : It is compulsory to initialize the object by using the
+            SetObject() method atleast once before working with this object.
+            </para>
+            <para>
+            Avoiding so, will cause it to throw a BinaryObjectNotInitializedException
+            whenever an operation will be performed on it.
+            </para>
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.#ctor(System.UInt32)">
+            <summary>
+            Constructor accepting size of the object as argument.
+            This initializes the object with null values, but allocating the said amount of 
+            space.
+            </summary>
+            <param name="size">Size of the BinaryNumber object to be constructed in Bytes.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.#ctor(System.String)">
+            <summary>
+            Contructor accepting binary number as a string argument.
+            </summary>
+            <param name="binaryNumberAsString">Binary Number to be considered.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.#ctor(System.Byte[])">
+            <summary>
+            Constructor accepting a byte array as argument.
+            </summary>
+            <param name="byteArray">Input Binary Array.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.Clone">
+            <summary>
+            Creates a copy of the object of this class.
+            </summary>
+            <returns>Copy of the object of this class.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.IsEqual(BinaryNumberClasses.BinaryNumber)">
+            <summary>
+            Tells whether the input BinaryNumber object is identical to this BinaryNumber object.
+            </summary>
+            <param name="comparisonBinaryNumber">The BinaryNumber object to be compared with.</param>
+            <returns>True if identical, else False.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.ExtractBytes(System.UInt32,System.UInt32)">
+            <summary>
+            Extracts the byte stream from the specified start index till the stop index.
+            </summary>
+            <param name="startByteIndex">Index of the byte from which to start extraction.</param>
+            <param name="endByteIndex">Index of the byte where to stop extraction.</param>
+            <returns>A BinaryNumber object of the byte array extracted from this object
+            from the specified start index to the end index.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.GetByteIndexAtBitIndex(System.UInt32)">
+            <summary>
+            Gets index of Byte containing the bit at the specified Binary Digit index.
+            </summary>
+            <param name="index">Index of Binary bit whose location is being considered.</param>
+            <returns>Index of Byte in the ByteRepresentation Array containing 
+            the bit at the specified Binary Digit index.
+            <para>GetByteIndexAtBitIndex(17) will return the value '2'.</para></returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.GetByteOffsetInArrayFromBitIndex(System.UInt32)">
+            <summary>
+            Gets the index of the bit referenced by the input Binary Digit index
+            with respect to the byte of the byte array it is contained in.
+            </summary>
+            <param name="index">Index of the bit in consideration.</param>
+            <returns>Index of the bit referenced by the input Binary Digit index
+            with respect to the byte of the byte array it is contained in.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.GetCorrespondingByteAtBitIndex(System.UInt32)">
+            <summary>
+            Gets the byte corresponding to the bit stored at the specified Binary index.
+            </summary>
+            <param name="index">Index of the bit, the byte containing which is to be returned</param>
+            <returns>The Byte which contains the bit at the specified index.
+            <para>
+            Example : GetCorrespondingByteAtBitIndex(9) will return contents of ByteRepresentation[1].
+            </para>
+            </returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.GetBitAtIndex(System.UInt32)">
+            <summary>
+            Returns the Bit ('0' or '1') stored in the object at the given index.
+            </summary>
+            <param name="index">Index of the position from which the Bit is to be extracted.</param>
+            <returns>Bit value stored at the given index of the input binary data.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.Clear">
+            <summary>
+            Sets all bytes to Zero.
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.SetBitAtIndex(System.UInt32,System.Byte)">
+            <summary>
+            Sets the Bit at the given index to the one specified.
+            </summary>
+            <param name="index">Index of the Bit to be altered.</param>
+            <param name="bit">'0' or '1', whicever bit is to be stored at the location</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.SetObject(System.String)">
+            <summary>
+            Sets the ByteRepresentation byte array according to the binary value denoted by the
+            input String.
+            </summary>
+            <param name="binaryNumberAsString">Binary Number to be considered.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.SetObject(System.Byte[])">
+            <summary>
+            Sets the ByteRepresentation Byte Array Property of the object.
+            </summary>
+            <param name="byteArray">Byte Array containing the binary data for the ByteRepresentation Property
+            of the BinaryNumber Object.</param>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.privateGetByteOffsetInArrayFromBitIndex(System.UInt32)">
+            <summary>
+            Private version of GetByteOffsetInArrayFromBitIndex which removes overhead of checking
+            index reference consistency.
+            </summary>
+            <param name="index">Index of the bit in consideration.</param>
+            <returns>Index of the bit referenced by the input Binary Digit index
+            with respect to the byte of the byte array it is contained in.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.privateGetByteIndexAtBitIndex(System.UInt32)">
+            <summary>
+            Private method which removes overhead of checking index reference consistency.
+            </summary>
+            <param name="index">Index of Binary bit whose location is being considered.</param>
+            <returns>Index of Byte in the ByteRepresentation Array containing 
+            the bit at the specified Binary Digit index.
+            <para>GetByteIndexAtBitIndex(17) will return the value '2'.</para></returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.getNoOfOnes">
+            <summary>
+            Calculates number of bits in input binary data set to '1'.
+            </summary>
+            <returns>Number of bits in input binary data set to '1'.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.computeByteRepresentation(System.String)">
+            <summary>
+            Computes the value of ByteRepresentation byte array of this class.
+            </summary>
+            <param name="binString">Binary number to be utilised.</param>
+            <returns>Byte Array containing the binary digits as a minimum fit.</returns>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.updateAllPublicAttributes">
+            <summary>
+            Updates the values of all Public and Private attributes of the object of this class
+            corresponding to the contents of the ByteRepresentation Array.
+            </summary>
+        </member>
+        <member name="M:BinaryNumberClasses.BinaryNumber.computeByteRepresentationLength(System.String)">
+            <summary>
+            Computes value of NoOfBytes Property, which stores the size of the 
+            ByteRepresentation array.
+            </summary>
+            <param name="binaryNumAsString">Binary Number to be considered.</param>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.NoOfBytes">
+            <summary>
+            Number of Bytes occupied by stored Binary number.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.NoOfBits">
+            <summary>
+            Number of bits occupied
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.NoOfOnes">
+            <summary>
+            Number of bits in the binary data set to '1'.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.BinaryDataSetInitialized">
+            <summary>
+            This is set true only when the object of this class is initialized with binary data.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.ByteRepresentation">
+            <summary>
+            Variable storing the binary data on which operations will be performed.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.BinaryNumber.StringRepresentation">
+            <summary>
+            Contains the string representation of the binary data, i.e as '0's and '1's.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberClasses.BinaryObjectNotInitializedException">
+            <summary>
+            Exception Thrown when Binary object is modified without initialization.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberClasses.IllegalExtractionParameters">
+            <summary>
+            Exception Thrown when start and stop indices for extraction of Byte stream from a given
+            BinaryNumber object are invalid.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberClasses.InvalidBinaryStringException">
+            <summary>
+            Exception thrown when a non-binary string is entered as binary data 
+            into the Binary Object.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberClasses.InvalidBinaryInputDataTypeException">
+            <summary>
+            Exception thrown when illegal data is inserted into the
+            Binary object.
+            </summary>
+        </member>
+        <member name="T:BinaryNumberClasses.IllegalBitReferenceIndexException">
+            <summary>
+            Exception thrown when an illegal reference to a bit location in the binary Data
+            contained in the BinaryNumber object is made. 
+            </summary>
+        </member>
+        <member name="T:BinaryNumberClasses.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:BinaryNumberClasses.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

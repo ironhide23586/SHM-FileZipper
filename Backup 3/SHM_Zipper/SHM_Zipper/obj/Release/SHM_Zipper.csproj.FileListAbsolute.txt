@@ -1,0 +1,8 @@
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM_Zipper\SHM_Zipper\bin\Release\SHM_Zipper.XML
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM_Zipper\SHM_Zipper\bin\Release\SHM_Zipper.dll
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM_Zipper\SHM_Zipper\bin\Release\SHM_Zipper.pdb
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM_Zipper\SHM_Zipper\bin\Release\BinaryNumberClasses.dll
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM_Zipper\SHM_Zipper\bin\Release\BinaryNumberClasses.pdb
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM_Zipper\SHM_Zipper\bin\Release\BinaryNumberClasses.xml
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM_Zipper\SHM_Zipper\obj\Release\SHM_Zipper.dll
+C:\Users\monst_000\Documents\Visual Studio 2012\Projects\SHM_Zipper\SHM_Zipper\obj\Release\SHM_Zipper.pdb
